@@ -21,7 +21,8 @@ export class AppComponent implements OnInit {
   constructor(private employeeService : EmployeeService ) {}
 
   ngOnInit(): void {
-     // this.getEmployees();
+      this.getEmployees();
+     
   }
 
   public getEmployees() : void {
@@ -82,6 +83,27 @@ export class AppComponent implements OnInit {
       }
     )
 
+  }
+
+
+  public searchEmployee(key : String){
+     const searchResult : Employee[] = [];
+
+     for(let employee of this.employees){
+        if(employee.firstName.toLowerCase().includes(key.toLowerCase()) ||
+           employee.lastName.toLowerCase().includes(key.toLowerCase()) ||
+           employee.email.toLowerCase().includes(key.toLowerCase()) ||
+           employee.jobTitle.toLowerCase().includes(key.toLowerCase()) ||
+           employee.employeeCode.toLowerCase().includes(key.toLowerCase())){
+          searchResult.push(employee);
+        }
+     }
+
+     this.employees = searchResult;
+
+     if(key.length == 0){
+      this.getEmployees();
+     }
   }
 
 
