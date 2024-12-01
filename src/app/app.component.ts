@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
     this.employeeService.addEmployee(addForm.value).subscribe(
       (response : Employee) => {
           this.getEmployees();
-          alert(`${addForm.value.firstName} ${addForm.value.lastName} was added successfully!`);
+          //alert(`${addForm.value.firstName} ${addForm.value.lastName} was added successfully!`);
       },
       (error: HttpErrorResponse) => {
         alert("Couldn't add employee, please try again.")
